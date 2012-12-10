@@ -1,0 +1,230 @@
+.TH eLyXer "1" "August 2011"
+.SH NAME
+elyxer - convert LyX files to html
+.SH SYNOPSIS
+.B elyxer
+[options]
+[infile]
+[outfile]
+
+.SH DESCRIPTION
+eLyXer (pronounced elixir) is a LyX to HTML converter. It's written in plain
+Python and doesn't rely on any kind of TeX to html converters.
+
+.SH COMMON OPTIONS
+.sp 1
+.TP 0.5i
+.BR \-\-help
+Display help.
+
+.TP 0.5i
+.BR \-\-quiet
+Disable all runtime messages.
+
+
+.SH ADVANCED OPTIONS
+.sp 1
+.TP 0.5i
+.BR \-\-debug
+Enable debugging messages (for developers).
+
+.TP 0.5i
+.BR \-\-version
+Show version number and release date.
+
+.TP 0.5i
+.BR \-\-lyxformat
+Return the highest supported LyX version that can be converted.
+
+
+.SH HTML OUTPUT OPTIONS
+.sp 1
+.TP 0.5i
+.BR \-\-title " title"
+Set the generated page title.
+
+.TP 0.5i
+.BR \-\-css " file.css"
+Use a custom CSS file.
+
+.TP 0.5i
+.BR \-\-embedcss " file.css"
+Embed the CSS file into the HTML output instead of including
+a separate file.
+
+.TP 0.5i
+.BR \-\-html
+Output HTML 4.0 instead of the default XHTML.
+
+.TP 0.5i
+.BR \-\-unicode
+Full unicode output.
+
+.TP 0.5i
+.BR \-\-iso885915
+Output the document with ISO-8859-15 encoding
+instead of UTF-8.
+
+.TP 0.5i
+.BR \-\-nofooter
+Don't include the 'created by eLyXer' footer.
+
+.TP 0.5i
+.BR \-\-simplemath
+Do not generate fancy math constructions.
+
+.SH IMAGE OUTPUT OPTIONS
+.sp 1
+.TP 0.5i
+.BR \-\-directory " image_dir"
+Look for images in the specified directory.
+
+.TP 0.5i
+.BR \-\-destdirectorty " dest_dir"
+Place converted images into this directory.
+
+.TP 0.5i
+.BR \-\-forceformat " .extension (deprecated)"
+Starting with eLyXer 1.1.1 this option has been replaced by the
+\fB\-\-imageformat\fR option.
+
+.TP 0.5i
+.BR \-\-imageformat " .extension | copy"
+Force the image output format, default is PNG.
+
+This option is helpful in cases were you'd like to override the automatic
+conversion to the PNG image format. If you'd like to preserve all images
+in the original format use the \fBcopy\fR command.
+
+.TP 0.5i
+.BR \-\-converter " inkscape"
+Use Inkscape as the image converter.
+
+.TP 0.5i
+.BR \-\-noconvert
+Do not convert images, just use them in the current available
+format they're stored in.
+
+Be aware that you've to copy your image files to the output directory if
+you create the html output outside of the source directory.
+
+.SH FOODNOTE OPTIONS
+.TP 0.5i
+.BR \-\-numberfoot
+Label footnotes with numbers instead of letters.
+
+.TP 0.5i
+.BR \-\-symbolfoot
+Label footnotes with symbols instead of letters, e.g. *, **.
+
+.TP 0.5i
+.BR \-\-hoverfoot
+Show footnotes as hovering text (default).
+
+.TP 0.5i
+.BR \-\-marginfoot
+Show footnotes on the page margin.
+
+.TP 0.5i
+.BR \-\-endfoot
+Show footnotes at the end of the page.
+
+.TP 0.5i
+.BR \-\-supfoot
+Use superscript for footnote markers (default).
+
+.TP 0.5i
+.BR \-\-alignfoot
+Use aligned text for footnote markers.
+
+.TP 0.5i
+.BR \-\-footnotes " number,symbol,hover,margin,end,sup,align"
+You can specify one or more of the above footnote options as
+a comma speparated list. 
+
+.SH ADVANCED OUTPUT OPTIONS
+.sp 1
+.TP 0.5i
+.BR \-\-splitpart " level"
+Split the resulting webpage at the given level.
+
+.TP 0.5i
+.BR \-\-tocfor " page"
+Generate a TOC that points to the given page.
+
+.TP 0.5i
+.BR \-\-toc " (deprecated)"
+Create a table of contents.
+
+.TP 0.5i
+.BR \-\-target " frame"
+Let all links point to the given frame.
+
+.TP 0.5i
+.BR \-\-toctarget " page (deprecated)"
+Generate a TOC that points to the given page.
+
+.TP 0.5i
+.BR \-\-notoclabels
+Omit the part lables like 'Chapter' in the TOC.
+
+.TP 0.5i
+.BR \-\-lowmem
+Force on the fly conversion to conserve memory.
+.br
+This is the old behaviour of eLyXer prior to 0.36.
+
+.TP 0.5i
+.BR \-\-raw
+Generate HTML without header or footer.
+
+.TP 0.5i
+.BR \-\-jsmath " URL (deprecated)"
+Use jsMath fomr the given URL to display equations.
+
+.TP 0.5i
+.BR \-\-mathjax " URL | remote"
+Use MathJax from the given URL to display equations.
+If you use \fB\-\-mathjax\fR with the keyword \fBremote\fR
+instead of an URL you can use the MathJax CDN instead of a
+local copy. 
+
+.TP 0.5i
+.BR \-\-googlecharts
+Use Google Charts to generate formular images.
+
+.TP 0.5i
+.BR \-\-template " file"
+Use a template, put everything into <!--$content-->.
+
+.TP 0.5i
+.BR \-\-copyright
+Add a copyright notice at the bottom.
+
+.TP 0.5i
+.BR \-\-nocopy " (deprecated)"
+Disables the copyright notice at the bottom.
+With eLyXer 0.99 the default changed to not include
+a copyright notice. See also \-\-copyright if you
+would like to have copyright notice printed.
+
+.SH AUTHOR
+This manpage was written by Sven Hoexter <sven@timegate.de> for the Debian
+operating system.
+eLyXer was written by Alex Fernández <elyxer@gmail.com>.
+
+.SH COPYRIGHT
+eLyXer is copyright \(co 2009-11 Alex Fernández.
+.br
+This manpage is copyright \(co 2009-11 Sven Hoexter and Alex Fernández.
+.br
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+.br
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+
+.SH SEE ALSO
+On a Debian operating system you can find the full documentation for eLyXer
+in /usr/share/doc/elyxer/.
+The website of eLyXer is <http://www.nongnu.org/elyxer/>
