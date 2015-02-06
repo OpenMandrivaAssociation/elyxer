@@ -3,7 +3,7 @@
 
 Name:		elyxer
 Version:	1.2.3
-Release:	2
+Release:	3
 Summary:	Convert LyX source files to HTML output
 License:	GPLv3
 Group:		Text tools
