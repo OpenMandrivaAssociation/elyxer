@@ -2,8 +2,8 @@
 # and Damir Shayhutdinov's work in ALT Linux
 
 Name:		elyxer
-Version:	1.2.3
-Release:	3
+Version:	1.2.5
+Release:	1
 Summary:	Convert LyX source files to HTML output
 License:	GPLv3
 Group:		Text tools
@@ -28,34 +28,25 @@ http://www.nongnu.org/elyxer/
 %setup -q
 
 %build
-%__python setup.py build
+python setup.py build
 
 %install
-%__python setup.py install --root=%{buildroot} --install-lib=%{py_sitedir}
+python setup.py install --root=%{buildroot} --install-lib=%{py_puresitedir}
 
-%__mkdir_p %{buildroot}%{_bindir}
-%__mkdir_p %{buildroot}%{_datadir}/locale
+mkdir -p %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_datadir}/locale
 cp -rf ./po/locale/* %{buildroot}%{_datadir}/locale
 
-%__mkdir_p %{buildroot}%{_mandir}/man1
+mkdir -p %{buildroot}%{_mandir}/man1
 cp %{SOURCE1} %{SOURCE2} %{buildroot}%{_mandir}/man1/
 
 for i in %{buildroot}%{_bindir}/*.py; do
-%__mv $i %{buildroot}%{_bindir}/`basename $i .py`
+mv $i %{buildroot}%{_bindir}/`basename $i .py`
 done
 
 %find_lang %{name}
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %{_bindir}/*
-%{py_sitedir}/*.egg-info
+%{py_puresitedir}/*.egg-info
 %{_mandir}/man1/*
-
-
-
-%changelog
-* Thu Feb 23 2012 Andrey Bondrov <abondrov@mandriva.org> 1.2.3-1
-+ Revision: 779293
-- imported package elyxer
-
