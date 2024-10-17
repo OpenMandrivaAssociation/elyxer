@@ -7,7 +7,7 @@ Release:	1
 Summary:	Convert LyX source files to HTML output
 License:	GPLv3
 Group:		Text tools
-URL:		http://www.nongnu.org/elyxer/
+URL:		https://www.nongnu.org/elyxer/
 Source0:	http://download.savannah.gnu.org/releases-noredirect/%{name}/%{name}-%{version}.tar.gz
 Source1:	elyxer.1
 Source2:	loremipsumize.1
